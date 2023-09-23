@@ -2,9 +2,9 @@
 function MyEvents() {
 
     return (
-      <>
-        <h1>Meus Eventos</h1>
-      </>
+      <div className="w-full">
+        <h1>Meus eventos</h1>
+      </div>
     )
   }
   
