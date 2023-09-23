@@ -1,4 +1,4 @@
-# Base React
+# Orange Juice Events - REACT JS
 
 ## Tecnologias utilizadas
 
