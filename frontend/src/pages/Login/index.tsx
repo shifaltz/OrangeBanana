@@ -1,74 +1,40 @@
-import { VisibilityOff, Visibility } from "@mui/icons-material";
-import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from "@mui/material";
-import { useState } from "react";
-import Button from '@mui/material/Button';
-
+import { Button, Input } from "@material-tailwind/react";
+import logo from "../../assets/logo.png"
 
 function Login() {
-
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-  };
-
   return (
     <>
       <div className="h-screen flex items-center justify-center">
-        <div className="h-4/5 w-3/4 bg-[#2C2C2C] rounded-[50px] flex">
+        <div className="h-4/5 w-3/4 bg-[#2C2C2C] rounded-3xl flex">
+        <div className="w-full lg:w-1/2 bg-[#EAEAEA] flex justify-center items-center rounded-3xl">
+            <div className="w-full md:px-32 lg:px-24">
+              <div className="h-52 items-center justify-center flex">
+                <img src={logo} className="w-44 h-44"/>
+              </div>
+              <form className="w-full rounded-lg p-1 text-center">
+                <div className=" flex flex-col justify-center gap-7">
+                  <Input crossOrigin={undefined} type="text" variant="outlined" label="Email" color="orange" size="lg"/>
+                  <Input crossOrigin={undefined} type="password" variant="outlined" label="Senha" color="orange" size="lg"/>
+                  <div className="text-end -mt-6">
+                    <p className="text-[#ED9121] hover:cursor-pointer text-sm">Esqueci a minha senha</p>
+                  </div>
+                  <Button className="bg-[#ED9121] font-bold text-sm" size="md">ENTRAR</Button>
+
+                  <p>Não tem conta? <h1 className="text-[#ED9121] hover:cursor-pointer">Registre-se</h1></p>
+                    
+                </div>
+              </form>
+            </div>
+          </div>
           <div
             className="hidden lg:flex w-full lg:w-1/2 login_img_section
           justify-around items-center"
           >
-            <div
-              className=" 
-                  bg-black 
-                  opacity-20 
-                  inset-0 
-                  z-0"
-            ></div>
             <div className="w-full mx-auto px-20 flex-col items-center space-y-6 text-center">
               <p className="text-white text-2xl font-semibold">Bem-vindo ao</p>
               <h1 className="text-[#ED9121] font-bold text-5xl font-sans">
-                Tangerine Ticket 
+                Tangerine Ticket
               </h1>
-            </div>
-          </div>
-          <div className="flex w-full lg:w-1/2 justify-center items-center bg-[#EAEAEA] space-y-8 rounded-br-[50px] rounded-tr-[50px]">
-            <div className="w-full px-8 md:px-32 lg:px-24">
-              <form className="bg-white rounded-md shadow-2xl p-5 text-center">
-                <TextField sx={{ height: '80px', width: '426px', marginBottom: '30px'}} id="outlined-basic" color="warning" label="Email" variant="outlined" focused />
-                <FormControl sx={{ height: '80px', width: '426px'}} variant="outlined" color="warning" focused>
-                  <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-password"
-                    type={showPassword ? 'text' : 'password'}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {showPassword ? <Visibility color="warning" /> : <VisibilityOff color="warning"/>}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                    label="Password"
-                  />
-                </FormControl>
-                <div className="flex w-[455px] justify-end mb-14 -mt-5">
-                  <p className="text-[#ED9121] hover:cursor-pointer">Esqueci minha senha</p>
-                </div>
-                <Button variant="contained" color="warning" className="w-[455px]"><p className="text-white font-bold text-[24px]">ENTRAR</p></Button>
-                <div className="flex justify-center">
-                  <p>Não tem conta?</p><p className="text-[#ED9121] hover:cursor-pointer ml-1">  Registre-se</p>
-                </div>
-                
-              </form>
             </div>
           </div>
         </div>
