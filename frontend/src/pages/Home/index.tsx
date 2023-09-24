@@ -1,10 +1,11 @@
+import EventCard from "../../components/EventCard"
 
 function Home() {
 
   return (
-    <div className="w-full">
-      <h1>Home</h1>
-    </div>
+    <>
+      <EventCard />
+    </>
   )
 }
 

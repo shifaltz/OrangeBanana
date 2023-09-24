@@ -4,10 +4,10 @@ import SideBar from '../SideBar';
 
 function Layout() {
   return (
-    <div className='flex'>
-    <SideBar />
-    <Outlet />
-    </div>   
+    <div className='grid grid-cols-12 w-full h-full'>
+      <SideBar />
+      <Outlet />
+    </div> 
 
   );
 }
