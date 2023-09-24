@@ -48,7 +48,7 @@ function AllEvents() {
 
   return (
 
-      <div className="grid col-start-1 lg:col-start-3 xl:col-start-3 col-span-12 md:col-span-12n lg:col-span-10 xl:col-span-10 flex-col h-full bg-[#BFBFBF]">
+      <div className="grid col-start-1 lg:col-start-3 xl:col-start-3 col-span-12 md:col-span-12 lg:col-span-10 xl:col-span-10 flex-col h-full bg-[#BFBFBF]">
         <div className="flex justify-center items-center w-full h-36 bg-[#303030] shadow-md">
           <div className="pt-2 relative mx-auto text-gray-600">
             <input className="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
