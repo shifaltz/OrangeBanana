@@ -24,9 +24,10 @@ model Event {
   type        Type
   address     String
   description String
+  host        Hosts
   online      Boolean
   free        Boolean
-  price       Float?
+  price       String?
   thumbnail   String
   banner      String
 
@@ -38,4 +39,10 @@ enum Type {
   class
   lecture
   mentoring
+}
+
+enum Hosts {
+  NeymarJr
+  ChicoMoedas
+  Cabelinho
 }
