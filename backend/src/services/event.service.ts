@@ -8,7 +8,7 @@ const eventSchema = z.object({
   type: z.enum(["course", "class", "lecture", "mentoring"]),
   address: z.string().nonempty(),
   description: z.string().nonempty(),
-  host: z.enum(["NeymarJr", "ChicoMoedas", "Cabelinho"]),
+  host_id: z.string(),
   online: z.boolean(),
   free: z.boolean(),
   price: z.string().optional(),
