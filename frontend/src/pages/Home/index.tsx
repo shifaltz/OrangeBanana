@@ -1,8 +1,10 @@
+import AllEvents from "../../components/AllEvents"
+
 function Home() {
 
   return (
     <>
-      <h1>Oba, bão?</h1>
+      <AllEvents />
     </>
   )
 }
