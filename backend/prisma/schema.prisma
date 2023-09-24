@@ -16,3 +16,26 @@ model User {
 
   @@map("users")
 }
+
+model Event {
+  id          String  @id @default(uuid())
+  title       String
+  date_time   DateTime
+  type        Type
+  address     String
+  description String
+  online      Boolean
+  free        Boolean
+  price       Float?
+  thumbnail   String
+  banner      String
+
+  @@map("events")
+}
+
+enum Type {
+  course
+  class
+  lecture
+  mentoring
+}
