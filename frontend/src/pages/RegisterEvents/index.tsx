@@ -3,11 +3,12 @@ import { Button, Checkbox, Input, Option, Radio, Select, Textarea } from "@mater
 
 function RegisterEvents() {
   return (
-    <>
-        <div className="bg-[#EAEAEA] flex justify-center items-center rounded-3xl">
+      <div className="flex w-full col-start-1 lg:col-start-3 xl:col-start-3 col-span-12 md:col-span-12n lg:col-span-10 xl:col-span-10 justify-center items-center">
+
+        <div className="w-full lg:w-auto xl:w-auto bg-[#EAEAEA] flex justify-center items-center rounded-3xl p-6">
           <div className="w-full md:px-32 lg:px-24">
             <div className="items-center justify-center flex mb-7">
-              <h1 className="text-[#ED9121] text-2xl lg:text-4xl font-bold">Cadatro de Evento</h1>
+              <h1 className="text-[#ED9121] text-3xl lg:text-4xl font-bold">Cadatro de Evento</h1>
             </div>
             <form className="w-full rounded-lg p-1 text-center">
               <div className="flex flex-col gap-7">
@@ -52,7 +53,7 @@ function RegisterEvents() {
             </form>
           </div>
         </div>
-  </>
+      </div>
   );
 }
 

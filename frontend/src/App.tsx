@@ -13,10 +13,11 @@ function App() {
       <Route path="/" element={ <Layout /> }>
         <Route path="" element= { <Home /> }/>
         <Route path="my-events" element= { <MyEvents /> }/>
+        <Route path="/registerEvents" element={ <RegisterEvents /> }/> 
       </Route>
       <Route path="/login" element={ <Login /> }/>
       <Route path="/register" element={ <Register /> }/>
-      <Route path="/registerEvents" element={ <RegisterEvents /> }/> 
+      
     </Routes>
 
     </>
