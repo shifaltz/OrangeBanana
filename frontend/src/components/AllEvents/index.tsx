@@ -4,21 +4,7 @@ import { useEffect, useState } from "react";
 import { format } from 'date-fns-tz';
 import ptBR from 'date-fns/locale/pt-BR';
 import { parseISO } from "date-fns";
-
-type EventType = {
-    id: string,
-    title: string,
-    date_time: string,
-    type: string,
-    address: string,
-    description: string,
-    host: string,
-    online: boolean,
-    free: boolean,
-    price: string,
-    thumbnail: string,
-    banner: string
-}
+import { EventType } from "../../types";
 
 function AllEvents() {
 
@@ -64,7 +50,7 @@ function AllEvents() {
 
         { event.map( (event) => (
           <div className="p-10 pb-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
-          <div className="bg-[#D9D9D9] rounded-[20px] shadow xl:col-span-6 xl:h-80 xl:grid xl:grid-cols-12 xl:grid-rows-6">
+          <a href={`/event-details/${event.id}`} className="bg-[#D9D9D9] rounded-[20px] shadow xl:col-span-6 xl:h-80 xl:grid xl:grid-cols-12 xl:grid-rows-6">
             <img className="w-full xl:w-auto xl:row-span-6 xl:h-full xl:col-span-3 rounded-tl-[20px] rounded-tr-[20px] xl:rounded-tr-[0px] xl:rounded-bl-[20px]" src={event.banner} alt={`Logo ${event.title}`}/>
             <div className="px-6 py-4 xl:mt-16 xl:col-start-4 xl:grid xl:grid-rows-3 xl:col-span-9 xl:row-span-4 xl:ml-10">
               <div className="w-full text-black text-base xl:text-2xl font-medium font-['Inter']">{event.title}</div>
@@ -75,7 +61,7 @@ function AllEvents() {
               <span className="inline-block bg-[#ED9121] rounded-full px-3 py-1 text-sm font-semibold text-white font-['Inter'] mr-2 mb-2">{event.online ? "Online" : "Presencial"}</span>
               <span className="inline-block bg-[#ED9121] rounded-full px-3 py-1 text-sm font-semibold text-white font-['Inter'] mr-2 mb-2">{event.price === "0" ? "Grátis" : `R$ ${event.price},00`}</span>
             </div>
-          </div>
+          </a>
           </div>
         ))}
         <NavBarMobile />

@@ -7,6 +7,11 @@ export const listEvents = async () => {
   return resp.data;
 }
 
+export const requestEventById = async (eventid: string) => {
+  const resp = await api.get(`/event/${eventid}`)
+  return resp.data;
+}
+
 export const login = async (data: {email:string, password:string}) => {
   const resp = await api.post("/login", data)
   return resp.data;
