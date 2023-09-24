@@ -21,6 +21,7 @@ type eventType = z.infer<typeof eventSchema>;
 export default class EventService {
   public getAll = async () => {
     const events = await prisma.event.findMany();
+    
     return events;
   };
 
@@ -35,8 +36,10 @@ export default class EventService {
   };
 
   public create = async (data: eventType) => {
-    eventSchema.parse(data);
 
+    console.log(data);
+    
+    eventSchema.parse(data);
 
     const result = await prisma.event.create({
       data

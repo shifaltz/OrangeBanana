@@ -17,6 +17,7 @@ app.get('/', (_req, res) => res.json({ ok: true }));
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/event', eventRouter);
+app.use('/files', express.static('uploads'));
 
 app.use(errorMiddleware);
 
