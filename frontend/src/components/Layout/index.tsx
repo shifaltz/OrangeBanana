@@ -1,13 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import SideBar from '../SideBar';
-import Box from '@mui/material/Box';
+
 
 function Layout() {
   return (
-    <Box sx={{ display: 'flex' }}>
-        <SideBar />
-        <Outlet />
-    </Box>
+    <div className='grid grid-cols-12 w-full h-full'>
+      <SideBar />
+      <Outlet />
+    </div> 
+
   );
 }
 

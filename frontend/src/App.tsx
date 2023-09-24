@@ -9,12 +9,16 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={ <Home /> }/>
-        <Route path="/login" element={ <Login /> }/>
-        <Route path="/register" element={ <Register /> }/>
-        <Route path="/registerEvents" element={ <RegisterEvents /> }/>
-      </Routes>
+    <Routes>
+      <Route path="/" element={ <Layout /> }>
+        <Route path="" element= { <Home /> }/>
+        <Route path="my-events" element= { <MyEvents /> }/>
+      </Route>
+      <Route path="/login" element={ <Login /> }/>
+      <Route path="/register" element={ <Register /> }/>
+      <Route path="/registerEvents" element={ <RegisterEvents /> }/> 
+    </Routes>
+
     </>
   )
 }
