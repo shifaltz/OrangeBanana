@@ -2,36 +2,58 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id       String @id @default(uuid())
-  name     String
-  email    String @unique
-  password String
-  role     String
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  password   String
+  role       String
+  favorites  Event[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   @@map("users")
 }
 
 model Event {
-  id          String  @id @default(uuid())
+  id          String   @id @default(uuid())
   title       String
   date_time   DateTime
   type        Type
   address     String
   description String
-  host        Hosts
   online      Boolean
   free        Boolean
   price       String?
   thumbnail   String
   banner      String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  hosted_by   Host     @relation(fields: [host_id], references: [id])
+  host_id     String
+  User        User[]
 
   @@map("events")
+}
+
+model Host {
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  Event      Event[]
+
+  @@map("hosts")
 }
 
 enum Type {
@@ -39,10 +61,4 @@ enum Type {
   class
   lecture
   mentoring
-}
-
-enum Hosts {
-  NeymarJr
-  ChicoMoedas
-  Cabelinho
 }
