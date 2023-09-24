@@ -1,10 +1,10 @@
-import EventCard from "../../components/EventCard"
+import AllEvents from "../../components/AllEvents"
 
 function Home() {
 
   return (
     <>
-      <EventCard />
+      <AllEvents />
     </>
   )
 }
