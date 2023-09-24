@@ -1,103 +1,48 @@
 export default function SideBar() {
     return (
-      <div className="flex flex-col h-screen p-3 bg-[#2C2C2C] shadow w-60">
-          <div className="space-y-3">
-              <div className="flex items-center my-5">
-                  <h2 className="text-xl font-bold text-[#ED9121] text-center">Orange Juice Events</h2>
-              </div>
-              <div className="flex-1">
-                  <ul className="pt-2 pb-4 space-y-1 text-sm">
-                      <li className="rounded-sm hover:bg-[#303030]">
-                          <a
-                              href="/"
-                              className="flex items-center p-2 space-x-3 rounded-md"
-                          >
-                              <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="w-6 h-6"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="white"
-                                  strokeWidth={2}
-                              >
-                                  <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                                  />
-                              </svg>
-                              <span className="text-white">Todos os eventos</span>
-                          </a>
-                      </li>
-                      <li className="rounded-sm hover:bg-[#303030]">
-                          <a
-                              href="/my-events"
-                              className="flex items-center p-2 space-x-3 rounded-m"
-                          >
-                              <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="w-6 h-6"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="white"
-                                  strokeWidth={2}
-                              >
-                                  <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                                  />
-                              </svg>
-                              <span className="text-white">Meus eventos</span>
-                          </a>
-                      </li>
-                      <li className="rounded-sm hover:bg-[#303030]">
-                          <a
-                              href="#"
-                              className="flex items-center p-2 space-x-3 rounded-md"
-                          >
-                              <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="w-6 h-6"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="white"
-                                  strokeWidth={2}
-                              >
-                                  <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                                  />
-                              </svg>
-                              <span className="text-white">Perfil</span>
-                          </a>
-                      </li>
-                      <li className="rounded-sm hover:bg-[#303030]">
-                          <a
-                              href="#"
-                              className="flex items-center p-2 space-x-3 rounded-md"
-                          >
-                              <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="w-6 h-6"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="white"
-                                  strokeWidth={2}
-                              >
-                                  <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                                  />
-                              </svg>
-                              <span className="text-white">Logout</span>
-                          </a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </div>
+        <>
+                <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
+
+        <div className="hidden col-span-2 min-h-screen flex-row bg-gray-100 sm:hidden md:hidden lg:grid xl:grid">
+        <div className="flex flex-col w-full h-full bg-[#2C2C2C] overflow-hidden">
+            <div className="flex items-center justify-center h-20 shadow-md">
+            <h1 className="text-3xl uppercase text-indigo-500">Logo</h1>
+            </div>
+            <ul className="flex flex-col py-4">
+            <li>
+                <a href="#" className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i className="bx bx-home"></i></span>
+                <span className="text-sm font-medium">Todos os eventos </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i className="bx bx-music"></i></span>
+                <span className="text-sm font-medium">Meus eventos</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i className="bx bx-user"></i></span>
+                <span className="text-sm font-medium">Perfil</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i className="bx bx-bell"></i></span>
+                <span className="text-sm font-medium">Notificações</span>
+                <span className="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500">5</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i className="bx bx-log-out"></i></span>
+                <span className="text-sm font-medium">Logout</span>
+                </a>
+            </li>
+            </ul>
+        </div>
+        </div>
+        </>
     );
 }
