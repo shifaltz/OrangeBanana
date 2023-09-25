@@ -1,5 +1,7 @@
-import { Button, Checkbox, Input, Option, Radio, Select, Textarea } from "@material-tailwind/react";
+import { Button, Checkbox, Input, Radio, Textarea } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
+import { EventType } from "../../types";
+import { registerPatati } from "../../api";
 
 
 
@@ -8,14 +10,13 @@ import { useEffect, useState } from "react";
 function RegisterEvents() {
 
   const INITIAL_STATE = {
-    id: '',
     title: '',
     date_time: '',
     type: '',
     address: '',
     description: '',
     host: '',
-    online: 'false',
+    online: false,
     free: false,
     price: '',
     thumbnail: '',
@@ -23,6 +24,8 @@ function RegisterEvents() {
 } 
 
   const [requestBody, setRequestBody] = useState(INITIAL_STATE)
+  const [date, setDate] = useState('')
+  const [time, setTime] = useState('')
 
   
   const handleChange = ( event: React.ChangeEvent<HTMLInputElement>) =>{
@@ -33,28 +36,59 @@ function RegisterEvents() {
     }))
   }
 
-  const convertStringInBoolean = (value) => {
+  const convertStringToBoolean = (value) => {
     if(value === 'true') {
       return true
     }
     if(value === 'false') {
       return false
     }
+    return false
   }
+
+  const formatDateTime = () => {
+
+      const dateParts = date.split("-");
+      const timeParts = time.split(":");
+
+
+      const combinedDate = new Date(
+        parseInt(dateParts[0]),  // Ano
+        parseInt(dateParts[1]) - 1,  // Mês (subtrai 1 porque os meses em JavaScript são baseados em zero)
+        parseInt(dateParts[2]),  // Dia
+        parseInt(timeParts[0]),  // Horas
+        parseInt(timeParts[1])   // Minutos
+      );
+
+      const combinedDateTimeString = combinedDate.toISOString();
+      
+      return combinedDateTimeString
+  
+  }
+
+  const registerEventDetails = async (values: EventType) => {
+    console.log('aaaa' + values);
+    await registerPatati(values)
+    console.log('bbbb');
+    
+  }
+
 
   const handleSubmit = (event) => {
     event.preventDefault()
     const obj = {...requestBody}
-    console.log(obj.online);
-
-    obj[online] = convertStringInBoolean(requestBody.online)
-
+    obj['online'] = convertStringToBoolean(requestBody.online)
+    obj['free'] = convertStringToBoolean(requestBody.free)
+    obj['date_time'] = formatDateTime()
+    registerEventDetails(obj)
   }
 
 
-  useEffect(() => {
-    console.log(requestBody);
-  },[requestBody])
+
+
+  // useEffect(() => {
+  //   console.log(requestBody);
+  // },[requestBody])
 
 
   return (
@@ -71,17 +105,17 @@ function RegisterEvents() {
                   <Input onChange={handleChange} name="title" crossOrigin={undefined} type="text" variant="outlined" label="Titulo" color="orange" size="lg"/>
                 </div> 
                 <div className="flex lg:flex-row flex-col gap-7">
-                    <Input onChange={handleChange} name="date_time" crossOrigin={undefined} type="date" variant="outlined" label="Data" color="orange" size="lg"/>
-                    <Input onChange={handleChange} name="date_time" crossOrigin={undefined} type="time" variant="outlined" label="Horário" color="orange" size="lg"/>
+                    <Input onChange={(e) => setDate(e.target.value)} name="date" crossOrigin={undefined} type="date" variant="outlined" label="Data" color="orange" size="lg"/>
+                    <Input onChange={(e) => setTime(e.target.value)} name="time" crossOrigin={undefined} type="time" variant="outlined" label="Horário" color="orange" size="lg"/>
                   </div>
                 <div className="flex flex-row gap-7">
                   {/* <Select onChange={handleChange} id="event-type" name="type" label="Tipo do Evento" color="orange"> */}
   
                     <select onChange={handleChange} name="type" id="event-type">
-                      <option value="Curso">Curso</option>
-                      <option value="Aula">Aula</option>
-                      <option value="Mentoria">Mentoria</option>
-                      <option value="Palestra">Palestra</option>
+                      <option value="course">Curso</option>
+                      <option value="class">Aula</option>
+                      <option value="mentoring">Mentoria</option>
+                      <option value="lecture">Palestra</option>
                     </select>
                   {/* <Option value="Aula">Aula</Option>
                   <Option value="Palestra">Palestra</Option>
