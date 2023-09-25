@@ -1,7 +1,7 @@
 import axios from "axios";
 import { EventType } from "../types";
 
-const api = axios.create({ baseURL: "http://localhost:3001"})
+const api = axios.create({ baseURL: "https://orangehackathon.onrender.com1"})
 
 export const listEvents = async () => {
   const resp = await api.get("/event")
