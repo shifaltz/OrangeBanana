@@ -1,4 +1,5 @@
 import axios from "axios";
+import { EventType } from "../types";
 
 const api = axios.create({ baseURL: "http://localhost:3001"})
 
@@ -14,6 +15,11 @@ export const requestEventById = async (eventid: string) => {
 
 export const login = async (data: {email:string, password:string}) => {
   const resp = await api.post("/login", data)
+  return resp.data;
+}
+
+export const registerPatati = async (data: EventType) => {
+  const resp = await api.post("/event", data)
   return resp.data;
 }
 
