@@ -101,7 +101,7 @@ function RegisterEvents() {
                     <Input onChange={(e) => setTime(e.target.value)} name="time" crossOrigin={undefined} type="time" variant="outlined" label="Horário" color="orange" size="lg"/>
                   </div>
                 <div className="flex flex-row gap-7">
-                    <select onChange={handleChange} name="type" id="event-type">
+                    <select className="bg-[#EAEAEA] border border-gray-400 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={handleChange} name="type" id="event-type">
                       <option value="course">Curso</option>
                       <option value="class">Aula</option>
                       <option value="mentoring">Mentoria</option>
