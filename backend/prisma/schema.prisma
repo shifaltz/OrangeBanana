@@ -38,8 +38,8 @@ model Event {
   banner      String
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
-  hosted_by   Host     @relation(fields: [host_id], references: [id])
-  host_id     String
+  hosted_by   Host?     @relation(fields: [host_id], references: [id])
+  host_id     String?
   User        User[]
 
   @@map("events")

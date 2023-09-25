@@ -26,11 +26,7 @@ export default class EventController {
   public create = async (req: Request, res: Response, next: NextFunction) => {
     
     try {
-      const files = req.files as  {[fieldname: string]: Express.Multer.File[]};
-      const thumbnail = files['thumbnail'][0].filename;
-      const banner = files['banner'][0].filename;
-    
-      const result = await this.eventService.create({...req.body, thumbnail, banner});
+      const result = await this.eventService.create(req.body);
       
       return res.status(200).json(result);
     } catch (error) {

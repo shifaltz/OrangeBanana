@@ -8,7 +8,7 @@ const eventSchema = z.object({
   type: z.enum(["course", "class", "lecture", "mentoring"]),
   address: z.string().nonempty(),
   description: z.string().nonempty(),
-  host_id: z.string(),
+  host_id: z.string().optional(),
   online: z.boolean(),
   free: z.boolean(),
   price: z.string().optional(),
@@ -36,8 +36,6 @@ export default class EventService {
   };
 
   public create = async (data: eventType) => {
-
-    console.log(data);
     
     eventSchema.parse(data);
 
