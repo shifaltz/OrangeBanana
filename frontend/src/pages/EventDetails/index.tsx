@@ -1,13 +1,28 @@
 import { useParams } from "react-router"
-import NavBarMobile from "../NavBarMobile"
 import { requestEventById } from "../../api"
 import { useEffect, useState } from "react"
 import { format, parseISO } from "date-fns"
 import { ptBR } from "date-fns/locale"
 import { EventType } from "../../types"
+import NavBarMobile from "../../components/NavBarMobile"
 
 function EventDetails() {
-    const [eventDetails, setEventDetails] = useState<EventType>([])
+    const INITIAL_STATE = {
+        title: '',
+        date_time: '',
+        type: '',
+        address: '',
+        description: '',
+        host: '',
+        online: false,
+        free: false,
+        price: '',
+        thumbnail: '',
+        banner: ''
+    } 
+    
+    
+    const [eventDetails, setEventDetails] = useState<EventType>(INITIAL_STATE)
     const [dateTime, setDateTime] = useState<string>('')
     const { eventid } = useParams()
 
@@ -33,10 +48,6 @@ function EventDetails() {
     useEffect(() => {
         getEventDetail()
     }, [])
-
-    useEffect(() => {
-        console.log(dateTime);
-    })
 
     return (
         <div className="grid grid-cols-2 w-full col-start-1 lg:col-start-3 col-span-12">

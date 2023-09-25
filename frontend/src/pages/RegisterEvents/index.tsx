@@ -1,5 +1,5 @@
 import { Button, Checkbox, Input, Radio, Textarea } from "@material-tailwind/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { EventType } from "../../types";
 import { registerPatati } from "../../api";
 
@@ -28,7 +28,7 @@ function RegisterEvents() {
   const [time, setTime] = useState('')
 
   
-  const handleChange = ( event: React.ChangeEvent<HTMLInputElement>) =>{
+  const handleChange = ( event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>) =>{
     const { name, value } = event.target
     setRequestBody((prev) => ({
       ...prev,
@@ -36,7 +36,7 @@ function RegisterEvents() {
     }))
   }
 
-  const convertStringToBoolean = (value) => {
+  const convertStringToBoolean = (value: string | boolean) => {
     if(value === 'true') {
       return true
     }
@@ -53,11 +53,11 @@ function RegisterEvents() {
 
 
       const combinedDate = new Date(
-        parseInt(dateParts[0]),  // Ano
-        parseInt(dateParts[1]) - 1,  // Mês (subtrai 1 porque os meses em JavaScript são baseados em zero)
-        parseInt(dateParts[2]),  // Dia
-        parseInt(timeParts[0]),  // Horas
-        parseInt(timeParts[1])   // Minutos
+        parseInt(dateParts[0]),
+        parseInt(dateParts[1]) - 1, 
+        parseInt(dateParts[2]), 
+        parseInt(timeParts[0]),
+        parseInt(timeParts[1]) 
       );
 
       const combinedDateTimeString = combinedDate.toISOString();
@@ -67,14 +67,14 @@ function RegisterEvents() {
   }
 
   const registerEventDetails = async (values: EventType) => {
-    console.log('aaaa' + values);
+    console.log(values);
     await registerPatati(values)
     console.log('bbbb');
     
   }
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const obj = {...requestBody}
     obj['online'] = convertStringToBoolean(requestBody.online)
@@ -82,14 +82,6 @@ function RegisterEvents() {
     obj['date_time'] = formatDateTime()
     registerEventDetails(obj)
   }
-
-
-
-
-  // useEffect(() => {
-  //   console.log(requestBody);
-  // },[requestBody])
-
 
   return (
       <div className="flex w-full col-start-1 lg:col-start-3 xl:col-start-3 col-span-12 md:col-span-12n lg:col-span-10 xl:col-span-10 justify-center items-center">
@@ -109,18 +101,12 @@ function RegisterEvents() {
                     <Input onChange={(e) => setTime(e.target.value)} name="time" crossOrigin={undefined} type="time" variant="outlined" label="Horário" color="orange" size="lg"/>
                   </div>
                 <div className="flex flex-row gap-7">
-                  {/* <Select onChange={handleChange} id="event-type" name="type" label="Tipo do Evento" color="orange"> */}
-  
                     <select onChange={handleChange} name="type" id="event-type">
                       <option value="course">Curso</option>
                       <option value="class">Aula</option>
                       <option value="mentoring">Mentoria</option>
                       <option value="lecture">Palestra</option>
                     </select>
-                  {/* <Option value="Aula">Aula</Option>
-                  <Option value="Palestra">Palestra</Option>
-                  <Option value="Mentoria">Mentoria</Option>
-                  <Option value="Curso">Curso</Option> */}
                 </div>
                 <div className="flex flex-row  gap-7">
                     <Textarea onChange={handleChange}  name="description" label="Descrição" color="orange"/>
