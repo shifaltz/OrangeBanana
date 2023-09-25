@@ -16,7 +16,7 @@ function Login() {
   const[dataLogin, setDataLogin] = useState(INITIAL_STATE);
   const navigate = useNavigate();
 
-  const handleChange = ( event: Event ) =>{
+  const handleChange = ( event: React.ChangeEvent<HTMLInputElement>) =>{
     const { name, value } = event.target as HTMLInputElement
     setDataLogin((prev) => ({
       ...prev,
@@ -24,9 +24,8 @@ function Login() {
     }))
   }
 
-  const handleSubmit = (event: Event) =>{
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) =>{
     event.preventDefault()
-    console.log(dataLogin)
     authenticateUser(dataLogin)
   }
 
@@ -63,7 +62,7 @@ function Login() {
                   </div>
                   <Button type="submit" className="bg-[#ED9121] font-bold text-sm" size="md">ENTRAR</Button>
 
-                  <p>Não tem conta? <h1 className="text-[#ED9121] hover:cursor-pointer">Registre-se</h1></p>
+                  <p>Não tem conta? <a href="/register"><h1 className="text-[#ED9121] hover:cursor-pointer">Registre-se</h1></a></p>
                     
                 </div>
               </form>
