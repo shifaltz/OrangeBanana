@@ -1,7 +1,38 @@
 import { Button, Input } from "@material-tailwind/react";
 import logo from "../../assets/logo.png"
+import { registerUser } from "../../api";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function Register() {
+  const INITIAL_STATE = {
+    name: '', 
+    email:'', 
+    password: ''
+  }
+  
+  const navigate = useNavigate()
+  const [userInfo, setUserInfo] = useState(INITIAL_STATE)
+
+  const handleChange = ( event: React.ChangeEvent<HTMLInputElement>) =>{
+    const { name, value } = event.target
+    setUserInfo((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+  
+  const registerUserInfo = async (values: {name: string, email:string, password:string} ) => {
+    await registerUser(values)
+  }
+  
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    registerUserInfo(userInfo);
+    alert('Cadastro realizado com sucesso!')
+    navigate('/login')
+  }
+  
   return (
     <>
       <div className="h-screen flex items-center justify-center">
@@ -21,13 +52,13 @@ function Register() {
               <div className="items-center justify-center flex mb-7">
                 <h1 className="text-[#ED9121] text-4xl font-bold">Crie sua conta</h1>
               </div>
-              <form className="w-full rounded-lg p-1 text-center">
+              <form onSubmit={handleSubmit} className="w-full rounded-lg p-1 text-center">
                 <div className=" flex flex-col justify-center gap-7">
-                  <Input crossOrigin={undefined} type="text" variant="outlined" label="Nome" color="orange" size="lg"/>
-                  <Input crossOrigin={undefined} type="text" variant="outlined" label="Email" color="orange" size="lg"/>
-                  <Input crossOrigin={undefined} type="password" variant="outlined" label="Senha" color="orange" size="lg"/>
-                  <Input crossOrigin={undefined} type="password" variant="outlined" label="Confirme sua senha" color="orange" size="lg"/>
-                  <Button className="bg-[#ED9121] font-bold text-sm" size="md">CADASTRAR</Button>
+                  <Input onChange={handleChange} crossOrigin={undefined} name="name" type="text" variant="outlined" label="Nome" color="orange" size="lg"/>
+                  <Input onChange={handleChange} crossOrigin={undefined} name="email" type="text" variant="outlined" label="Email" color="orange" size="lg"/>
+                  <Input onChange={handleChange} crossOrigin={undefined} name="password" type="password" variant="outlined" label="Senha" color="orange" size="lg"/>
+                  <Input onChange={handleChange} crossOrigin={undefined} type="password" variant="outlined" label="Confirme sua senha" color="orange" size="lg"/>
+                  <Button className="bg-[#ED9121] font-bold text-sm" size="md" type="submit">CADASTRAR</Button>
                 </div>
               </form>
             </div>

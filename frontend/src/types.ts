@@ -5,7 +5,7 @@ export type EventType = {
     type: string,
     address: string,
     description: string,
-    host: string,
+    host_id?: string,
     online: boolean,
     free: boolean,
     price: string,

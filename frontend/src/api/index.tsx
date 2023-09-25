@@ -18,7 +18,12 @@ export const login = async (data: {email:string, password:string}) => {
   return resp.data;
 }
 
-export const registerPatati = async (data: EventType) => {
+export const registerUser = async (data: {name: string, email:string, password:string}) => {
+  const resp = await api.post("/register", data)
+  return resp.data;
+}
+
+export const registerEvent = async (data: EventType) => {
   const resp = await api.post("/event", data)
   return resp.data;
 }

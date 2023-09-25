@@ -1,10 +1,7 @@
 import { Button, Checkbox, Input, Radio, Textarea } from "@material-tailwind/react";
 import { useState } from "react";
 import { EventType } from "../../types";
-import { registerPatati } from "../../api";
-
-
-
+import { registerEvent } from "../../api";
 
 
 function RegisterEvents() {
@@ -15,7 +12,6 @@ function RegisterEvents() {
     type: '',
     address: '',
     description: '',
-    host: '',
     online: false,
     free: false,
     price: '',
@@ -68,9 +64,7 @@ function RegisterEvents() {
 
   const registerEventDetails = async (values: EventType) => {
     console.log(values);
-    await registerPatati(values)
-    console.log('bbbb');
-    
+    await registerEvent(values)
   }
 
 
@@ -101,7 +95,7 @@ function RegisterEvents() {
                     <Input onChange={(e) => setTime(e.target.value)} name="time" crossOrigin={undefined} type="time" variant="outlined" label="Horário" color="orange" size="lg"/>
                   </div>
                 <div className="flex flex-row gap-7">
-                    <select onChange={handleChange} name="type" id="event-type">
+                    <select className="bg-[#EAEAEA] border border-gray-400 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={handleChange} name="type" id="event-type">
                       <option value="course">Curso</option>
                       <option value="class">Aula</option>
                       <option value="mentoring">Mentoria</option>
@@ -126,8 +120,8 @@ function RegisterEvents() {
                 </div> 
                 
                 <div className="flex flex-col lg:flex-row justify-center gap-7">
-                  <Input onChange={handleChange} name="thumbnail" crossOrigin={undefined} type="file" variant="outlined" label="Thumbnail" color="orange" size="md"/>
-                  <Input onChange={handleChange} name="banner" crossOrigin={undefined} type="file" variant="outlined" label="Banner" color="orange" size="md"/>
+                  <Input onChange={handleChange} name="thumbnail" crossOrigin={undefined} type="text" variant="outlined" label="Thumbnail" color="orange" size="md"/>
+                  <Input onChange={handleChange} name="banner" crossOrigin={undefined} type="text" variant="outlined" label="Banner" color="orange" size="md"/>
 
                 </div>
                 <Button className="bg-[#ED9121] font-bold text-sm" size="md" type="submit">CADASTRAR</Button>
